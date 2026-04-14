@@ -289,6 +289,18 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'superadmin']],
   Route::post('/tenant-plans/store', $sa_path . '\TenantPlanController@store')->name('superadmin.tenant-plans.store');
   Route::post('/tenant-plans/{id}/update', $sa_path . '\TenantPlanController@update')->name('superadmin.tenant-plans.update');
   Route::get('/tenant-plans/{id}/delete', $sa_path . '\TenantPlanController@destroy')->name('superadmin.tenant-plans.destroy');
+
+  // Revenue
+  Route::get('/subscriptions', $sa_path . '\RevenueController@subscriptions')->name('superadmin.subscriptions');
+  Route::get('/transactions', $sa_path . '\RevenueController@transactions')->name('superadmin.transactions');
+
+  // Platform Settings
+  Route::get('/settings/general', $sa_path . '\PlatformSettingsController@general')->name('superadmin.settings.general');
+  Route::post('/settings/general', $sa_path . '\PlatformSettingsController@updateGeneral')->name('superadmin.settings.general.update');
+  Route::get('/settings/api', $sa_path . '\PlatformSettingsController@api')->name('superadmin.settings.api');
+  Route::post('/settings/api', $sa_path . '\PlatformSettingsController@updateApi')->name('superadmin.settings.api.update');
+  Route::get('/settings/pricing', $sa_path . '\PlatformSettingsController@pricing')->name('superadmin.settings.pricing');
+  Route::post('/settings/pricing', $sa_path . '\PlatformSettingsController@updatePricing')->name('superadmin.settings.pricing.update');
 });
 
 
@@ -334,6 +346,12 @@ Route::group(['prefix' => 'tenant', 'middleware' => ['auth', 'tenant.owner']], f
 
   // Analytics
   Route::get('/analytics', $t_path . '\TenantDashboardController@analytics')->name('tenant.analytics');
+
+  // User Plans (tenant's subscription plans for their sub-users)
+  Route::get('/plans', $t_path . '\TenantPlanController@index')->name('tenant.plans.index');
+  Route::post('/plans/store', $t_path . '\TenantPlanController@store')->name('tenant.plans.store');
+  Route::post('/plans/{id}/update', $t_path . '\TenantPlanController@update')->name('tenant.plans.update');
+  Route::get('/plans/{id}/delete', $t_path . '\TenantPlanController@destroy')->name('tenant.plans.destroy');
 });
 
 
