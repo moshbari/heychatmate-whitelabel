@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('tenant_id')->nullable()->after('id');
-            $table->enum('role', ['super_admin', 'tenant_owner', 'tenant_admin', 'user'])->default('user')->after('type');
+            $table->enum('role', ['super_admin', 'tenant_owner', 'tenant_admin', 'user'])->default('user')->after('email');
             $table->unsignedBigInteger('invited_by')->nullable()->after('role');
             $table->timestamp('last_login_at')->nullable()->after('updated_at');
 
