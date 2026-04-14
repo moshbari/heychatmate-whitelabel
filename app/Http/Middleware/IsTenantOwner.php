@@ -19,15 +19,34 @@ class IsTenantOwner
         }
 
         $user = auth()->user();
-        $tenant = app()->bound('current_tenant') ? app('current_tenant') : null;
 
         // Must be tenant_owner or tenant_admin role
         if (!in_array($user->role, ['tenant_owner', 'tenant_admin'])) {
             abort(403, 'Access denied. Tenant owner privileges required.');
         }
 
-        // If there's a resolved tenant, user must belong to it
-        if ($tenant && $user->tenant_id !== $tenant->id) {
+        $tenant = app()->bound('current_tenant') ? app('current_tenant') : null;
+
+        // If no tenant resolved from domain, resolve from user's tenant_id
+        // This handles the case where tenant owner accesses /tenant/* routes
+        // from the main platform domain
+        if (!$tenant && $user->tenant_id) {
+            $tenant = \App\Models\Tenant::find($user->tenant_id);
+
+            if ($tenant) {
+                app()->instance('current_tenant', $tenant);
+                view()->share('currentTenant', $tenant);
+                config(['app.name' => $tenant->app_name]);
+            }
+        }
+
+        // Must have a valid tenant at this point
+        if (!$tenant) {
+            abort(403, 'No workspace associated with your account.');
+        }
+
+        // User must belong to the resolved tenant
+        if ($user->tenant_id !== $tenant->id) {
             abort(403, 'Access denied. You do not belong to this workspace.');
         }
 
