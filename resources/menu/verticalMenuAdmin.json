@@ -1,0 +1,119 @@
+{
+
+  "menu": [
+    {
+      "menuHeader": "Admin"
+    },
+    {
+      "url": "/dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "core.dashboard"
+    },
+    {
+      "url": "/manage-user",
+      "name": "Manage User",
+      "icon": "menu-icon tf-icons bx bx-group",
+      "slug": "manage.user"
+    },
+    {
+      "name": "Finance",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "admin",
+      "submenu": [
+        {
+          "url": "/manage-plans",
+          "name": "Manage Plans",
+          "slug": "admin.plans"
+        },
+        {
+          "url": "/gateways",
+          "name": "Payment Gateways",
+          "slug": "admin.gateway"
+        },
+        {
+          "url": "/subscriptions",
+          "name": "User Subscriptions",
+          "slug": "admin.user.subscriptions"
+        },
+        {
+          "url": "/payments",
+          "name": "User Payments",
+          "slug": "admin.user.payments"
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "icon": "menu-icon tf-icons bx bx bx-cog",
+      "slug": "settings",
+      "submenu": [
+        {
+          "url": "/settings/general",
+          "name": "General Settings",
+          "slug": "settings.index"
+        },
+        {
+          "url": "/settings/logo",
+          "name": "Logo & Favicon",
+          "slug": "settings.logo"
+        },
+        {
+          "url": "/settings/smtp",
+          "name": "Email Configuration",
+          "slug": "settings.smtp"
+        },
+        {
+          "url": "/settings/contact",
+          "name": "Contact Informations",
+          "slug": "settings.contact"
+        }
+      ]
+    },
+    {
+      "name": "Homepage Settings",
+      "icon": "menu-icon tf-icons bx bx bx-layout",
+      "slug": "homepage",
+      "submenu": [
+        {
+          "url": "/homepage/welcome",
+          "name": "Welcome Section",
+          "slug": "homepage.index"
+        },
+        {
+          "url": "/homepage/login",
+          "name": "Login Page",
+          "slug": "homepage.login"
+        },
+        {
+          "url": "/homepage/why",
+          "name": "Why Section",
+          "slug": "homepage.why"
+        },
+        {
+          "url": "/homepage/how",
+          "name": "How It Works Section",
+          "slug": "homepage.how"
+        },
+        {
+          "url": "/homepage/testimonials",
+          "name": "Testimonials Section",
+          "slug": "homepage.testimonials"
+        },
+        {
+          "url": "/homepage/faqs",
+          "name": "FAQ Section",
+          "slug": "homepage.faqs"
+        }
+
+      ]
+    },
+    {
+      "url": "/manage/pages",
+      "name": "Menu & Pages",
+      "icon": "menu-icon tf-icons bx bx-menu",
+      "slug": "manage.pages"
+    }
+
+  ]
+}

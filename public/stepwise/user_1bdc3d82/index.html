@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mosh engrmoshbari@gmail.com's StepWise Guides</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #1e293b, #0f172a); border-bottom: 1px solid #334155; padding: 40px 20px; text-align: center; }
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.header h1 em { background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: normal; }
+.header .user-name { font-size: 20px; font-weight: 600; color: #f59e0b; margin-bottom: 4px; }
+.header p { color: #94a3b8; font-size: 14px; }
+.container { max-width: 800px; margin: 0 auto; padding: 30px 20px; }
+.top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.count { font-size: 13px; color: #64748b; }
+.manage-btn { background: #1e293b; border: 1px solid #334155; color: #94a3b8; padding: 8px 16px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+.manage-btn:hover { border-color: #f59e0b; color: #f59e0b; }
+.manage-btn.active { border-color: #ef4444; color: #ef4444; }
+.guide-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.guide-card { flex: 1; background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; transition: all 0.2s; cursor: pointer; text-decoration: none; display: block; }
+.guide-card:hover { border-color: #f59e0b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(245,158,11,0.1); }
+.guide-title { font-size: 17px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px; }
+.guide-meta { font-size: 12px; color: #64748b; display: flex; gap: 16px; flex-wrap: wrap; }
+.guide-meta i { display: flex; align-items: center; gap: 4px; font-style: normal; }
+.del-btn { display: none; background: #1e293b; border: 1px solid #ef4444; color: #ef4444; width: 42px; height: 42px; border-radius: 10px; cursor: pointer; font-size: 18px; transition: all 0.2s; flex-shrink: 0; }
+.del-btn:hover { background: #ef4444; color: #fff; }
+.managing .del-btn { display: flex; align-items: center; justify-content: center; }
+.empty { text-align: center; padding: 60px 20px; color: #475569; }
+.empty p { font-size: 15px; }
+.footer { text-align: center; padding: 30px; color: #334155; font-size: 11px; }
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1e293b; border: 1px solid #334155; color: #e2e8f0; padding: 12px 24px; border-radius: 10px; font-size: 13px; display: none; z-index: 999; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.section-divider { margin: 40px 0 20px; padding-top: 20px; border-top: 1px solid #334155; }
+.section-label { font-size: 13px; color: #64748b; margin-bottom: 14px; }
+.video-card { flex: 1; background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; transition: all 0.2s; cursor: pointer; text-decoration: none; display: block; }
+.video-card:hover { border-color: #6366f1; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(99,102,241,0.1); }
+</style>
+</head>
+<body>
+<div class="header"><div class="user-name">Mosh engrmoshbari@gmail.com's</div><h1><em>StepWise</em> Guides</h1><p>Step-by-step tutorials and documentation</p></div>
+<div class="container" id="container">
+<div class="top-bar"><div class="count">19 guides, 23 videos published</div><button class="manage-btn" id="manageBtn" onclick="toggleManage()">Manage</button></div>
+<div class="guide-row">
+<a class="guide-card" href="w-how-to-use-my-offers-and-collect-buy-button-link.html" target="_blank">
+  <div class="guide-title">W+ How to Use My Offers And Collect Buy Button Links</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 27, 2026 13:25:07</i>
+    <i>&#x1F4CB; 6 steps</i>
+    <i>&#x1F4E6; 2073 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('w-how-to-use-my-offers-and-collect-buy-button-link', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-revoicer.html" target="_blank">
+  <div class="guide-title">How to Use Revoicer</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 25, 2026 06:59:14</i>
+    <i>&#x1F4CB; 5 steps</i>
+    <i>&#x1F4E6; 1684 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-revoicer', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-create-product-on-warriorplus.html" target="_blank">
+  <div class="guide-title">How to Create Product on WarriorPlus</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 20, 2026 23:42:05</i>
+    <i>&#x1F4CB; 19 steps</i>
+    <i>&#x1F4E6; 6557 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-create-product-on-warriorplus', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-send-dms-to-instagram-story-viewers-instagr.html" target="_blank">
+  <div class="guide-title">How to Send DMs to Instagram Story Viewers Instagram</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 17, 2026 02:14:06</i>
+    <i>&#x1F4CB; 5 steps</i>
+    <i>&#x1F4E6; 4912 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-send-dms-to-instagram-story-viewers-instagr', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-instaprofit-ai.html" target="_blank">
+  <div class="guide-title">How to Use InstaProfit AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 16, 2026 10:17:59</i>
+    <i>&#x1F4CB; 13 steps</i>
+    <i>&#x1F4E6; 7538 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-instaprofit-ai', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-smart-author-ai.html" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 16:54:50</i>
+    <i>&#x1F4CB; 10 steps</i>
+    <i>&#x1F4E6; 3966 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-smart-author-ai', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-storyteller-ai-children-s-book-creator.html" target="_blank">
+  <div class="guide-title">How to Use StoryTeller ✨ AI Children's Book Creator</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 27, 2026 07:03:37</i>
+    <i>&#x1F4CB; 6 steps</i>
+    <i>&#x1F4E6; 3482 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-storyteller-ai-children-s-book-creator', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-toonbook-creator.html" target="_blank">
+  <div class="guide-title">How to Use ToonBook Creator</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 26, 2026 00:58:26</i>
+    <i>&#x1F4CB; 16 steps</i>
+    <i>&#x1F4E6; 4288 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-toonbook-creator', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-toonbook-ai.html" target="_blank">
+  <div class="guide-title">How to Use ToonBook AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 26, 2026 09:30:28</i>
+    <i>&#x1F4CB; 10 steps</i>
+    <i>&#x1F4E6; 3437 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-toonbook-ai', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-viralmotionai.html" target="_blank">
+  <div class="guide-title">How to Use ViralMotionAI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 24, 2026 11:58:24</i>
+    <i>&#x1F4CB; 9 steps</i>
+    <i>&#x1F4E6; 4556 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-viralmotionai', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-find-ticket-on-docs.html" target="_blank">
+  <div class="guide-title">How to Send Follow Up Message Via Ticket From Google Sheet</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 19, 2026 09:35:39</i>
+    <i>&#x1F4CB; 7 steps</i>
+    <i>&#x1F4E6; 2746 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-find-ticket-on-docs', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-collect-customer-information.html" target="_blank">
+  <div class="guide-title">How to Use Collect Customer Information</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 18, 2026 14:16:51</i>
+    <i>&#x1F4CB; 5 steps</i>
+    <i>&#x1F4E6; 1661 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-collect-customer-information', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="where-is-99dfy-funnel-in-gohighlevel.html" target="_blank">
+  <div class="guide-title">Where is 99DFY Funnel In GoHighLevel</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 18, 2026 12:32:17</i>
+    <i>&#x1F4CB; 6 steps</i>
+    <i>&#x1F4E6; 1900 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('where-is-99dfy-funnel-in-gohighlevel', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-ghl-webinar-app.html" target="_blank">
+  <div class="guide-title">How to Use GHL Webinar App</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 18, 2026 08:09:07</i>
+    <i>&#x1F4CB; 5 steps</i>
+    <i>&#x1F4E6; 1227 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-ghl-webinar-app', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="untitled-guide.html" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 17, 2026 23:11:51</i>
+    <i>&#x1F4CB; 10 steps</i>
+    <i>&#x1F4E6; 3966 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('untitled-guide', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-azonempire-review-2.html" target="_blank">
+  <div class="guide-title">How to Use AzonEmpire (& Review)</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 17, 2026 19:05:04</i>
+    <i>&#x1F4CB; 21 steps</i>
+    <i>&#x1F4E6; 6400 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-azonempire-review-2', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-directsend.html" target="_blank">
+  <div class="guide-title">How to Use DirectSend</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 17, 2026 19:03:01</i>
+    <i>&#x1F4CB; 6 steps</i>
+    <i>&#x1F4E6; 2570 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-directsend', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-directsend-3.html" target="_blank">
+  <div class="guide-title">How to Use AzonEmpire (& Review)</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 17, 2026 18:03:56</i>
+    <i>&#x1F4CB; 21 steps</i>
+    <i>&#x1F4E6; 6400 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-directsend-3', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="guide-card" href="how-to-use-azonempire-review.html" target="_blank">
+  <div class="guide-title">How to Use AzonEmpire (&amp; Review)</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 15, 2026 16:48:53</i>
+    <i>&#x1F4CB; 21 steps</i>
+    <i>&#x1F4E6; 6400 KB</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteGuide('how-to-use-azonempire-review', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="section-divider"></div>
+<div class="section-label">&#x1F3AC; Videos</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/1050fe43-9b28-4625-9b70-d0ab41c00f62.mp4" target="_blank">
+  <div class="guide-title">How to Use InstaProfit AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 16, 2026 12:07:58</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773648478957', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/523d9272-00d5-41ba-85f3-2513630809d5.mp4" target="_blank">
+  <div class="guide-title">How to Use InstaProfit AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 16, 2026 11:34:01</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773646441161', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/e824f443-5e73-48a5-b91b-54c063ca01ac.mp4" target="_blank">
+  <div class="guide-title">How to Use InstaProfit AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 16, 2026 10:50:02</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773643802455', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/78ec0f78-1cdb-4dfd-931a-e780c72cb3a5.mp4" target="_blank">
+  <div class="guide-title">How to Use InstaProfit AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 16, 2026 10:26:25</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773642385446', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/1f232cbd-d3f7-4227-96e2-ad8ff2791f18.mp4" target="_blank">
+  <div class="guide-title">How to Use InstaProfit AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 16, 2026 10:15:47</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773641747038', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/9556a99f-3002-4238-855e-83bf5e65a1ab.mp4" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 17:05:12</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773320712373', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/338c0e56-1a18-4fa3-8b2a-e3b9cb7f70d6.mp4" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 16:54:22</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773320062810', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/ad4e8cc1-420a-4c4e-a0f5-675b4d968561.mp4" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 16:54:20</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773320060128', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/d70cef27-b4e9-44f1-8875-c34181b7fef7.mp4" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 14:32:48</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773311568051', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/dfb48a0a-72ae-47a6-a6b6-0f64956f1fac.mp4" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 14:32:43</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773311563773', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/3d10798c-279f-4a35-bcfc-efb9ca4c8006.mp4" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 14:19:45</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773310785303', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/d8ec7b17-bef4-48a5-b580-bdf0d16bea3c.mp4" target="_blank">
+  <div class="guide-title">How to Use Smart Author AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Mar 12, 2026 14:12:06</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1773310326290', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/5e1888b1-8161-4e5b-97fa-30c805f5d972.mp4" target="_blank">
+  <div class="guide-title">How to Use ToonBook AI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 26, 2026 09:29:55</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1772083795139', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://assets.cdn.filesafe.space/MV4qgCBrDVTq6S9QIYNa/media/3c62a294-1038-4bd7-b4ce-554b3ca0609a.mp4" target="_blank">
+  <div class="guide-title">How to Use ViralMotionAI</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 24, 2026 12:01:27</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771920087159', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/8c0f6448-cf13-4be7-ac5f-879240375ef7.mp4" target="_blank">
+  <div class="guide-title">How to Somewhere and open the ticket and send a message from google sheet</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 19, 2026 09:36:23</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771479383348', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/28a4ad69-33c7-4bce-a29c-9a4a256434a7.mp4" target="_blank">
+  <div class="guide-title">Where is 99DFY Funnel In GoHighLevel</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 18, 2026 12:39:24</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771403964421', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/317c56cd-3442-4d80-abd2-9854588582af.mp4" target="_blank">
+  <div class="guide-title">Where is 99DFY Funnel In GoHighLevel</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 18, 2026 12:34:56</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771403696291', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/12829540-e40c-4557-a411-4de36968bf2d.mp4" target="_blank">
+  <div class="guide-title">How to Use GHL Webinar App</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 18, 2026 08:12:51</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771387971482', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/2b4be2b9-1606-4aa9-99db-e47c64618520.mp4" target="_blank">
+  <div class="guide-title">How to Use AzonEmpire (& Review)</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 17, 2026 19:08:14</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771340894101', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/9c66d65a-8ef1-4b6f-bbb5-022e4c49f54c.mp4" target="_blank">
+  <div class="guide-title">How to Use DirectSend</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 17, 2026 19:03:59</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771340639761', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/443bd477-88b7-445e-9152-3cef6ae3a951.mp4" target="_blank">
+  <div class="guide-title">How to Use DirectSend</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 17, 2026 17:59:12</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771336752401', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/6ee170eb-39f0-4cc5-b5e1-4e22a316ae94.mp4" target="_blank">
+  <div class="guide-title">How to Use AzonEmpire (& Review)</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 15, 2026 16:51:58</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771163518214', this)" title="Delete">&#x1F5D1;</button>
+</div>
+<div class="guide-row">
+<a class="video-card" href="https://storage.googleapis.com/msgsndr/MV4qgCBrDVTq6S9QIYNa/media/0020f354-11d9-4800-8101-095114115bbe.mp4" target="_blank">
+  <div class="guide-title">LinkedIn Secrets 101</div>
+  <div class="guide-meta">
+    <i>&#x1F4C5; Feb 14, 2026 09:45:11</i>
+    <i>&#x1F3AC; MP4 Video</i>
+  </div>
+</a>
+<button class="del-btn" onclick="deleteVideo('vid_1771051511482', this)" title="Delete">&#x1F5D1;</button>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="footer">Powered by StepWise</div>
+<script>
+var apiUrl = "https://app.heychatmate.com/stepwise-api";
+var secretKey = "";
+var managing = false;
+
+function showToast(msg) {
+  var t = document.getElementById("toast");
+  t.textContent = msg; t.style.display = "block";
+  setTimeout(function() { t.style.display = "none"; }, 3000);
+}
+
+function toggleManage() {
+  var btn = document.getElementById("manageBtn");
+  var container = document.getElementById("container");
+  if (!managing) {
+    var key = prompt("Enter your API key:");
+    if (!key) return;
+    secretKey = key.trim();
+    fetch(apiUrl + "/list", { headers: { "Authorization": "Bearer " + secretKey } })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.success) {
+          managing = true;
+          container.classList.add("managing");
+          btn.textContent = "Done";
+          btn.classList.add("active");
+          showToast("Manage mode ON \u2014 click the red buttons to delete");
+        } else { showToast("Invalid key"); secretKey = ""; }
+      }).catch(function() { showToast("Could not connect to server"); });
+  } else {
+    managing = false;
+    container.classList.remove("managing");
+    btn.textContent = "Manage";
+    btn.classList.remove("active");
+  }
+}
+
+function deleteGuide(slug, btn) {
+  if (!confirm("Delete this guide permanently?")) return;
+  btn.textContent = "...";
+  fetch(apiUrl + "/delete/" + slug, {
+    method: "DELETE",
+    headers: { "Authorization": "Bearer " + secretKey }
+  }).then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.success) {
+        btn.closest(".guide-row").style.display = "none";
+        showToast("Guide deleted!");
+      } else { showToast("Delete failed: " + (d.error || "unknown")); btn.textContent = "\u{1F5D1}"; }
+    }).catch(function(e) { showToast("Error: " + e.message); btn.textContent = "\u{1F5D1}"; });
+}
+
+function deleteVideo(videoId, btn) {
+  if (!confirm("Delete this video link permanently?")) return;
+  btn.textContent = "...";
+  fetch(apiUrl + "/delete-video/" + videoId, {
+    method: "DELETE",
+    headers: { "Authorization": "Bearer " + secretKey }
+  }).then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.success) {
+        btn.closest(".guide-row").style.display = "none";
+        showToast("Video link deleted!");
+      } else { showToast("Delete failed: " + (d.error || "unknown")); btn.textContent = "\u{1F5D1}"; }
+    }).catch(function(e) { showToast("Error: " + e.message); btn.textContent = "\u{1F5D1}"; });
+}
+</script>
+</body>
+</html>

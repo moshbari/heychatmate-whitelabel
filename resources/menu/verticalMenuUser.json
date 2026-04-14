@@ -1,0 +1,57 @@
+{
+
+  "menu": [
+    {
+      "menuHeader": "User"
+    },
+    {
+      "url": "user/dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "user.dashboard"
+    },
+    {
+      "url": "/manage-assistants",
+      "name": "Manage Chat Bots",
+      "icon": "menu-icon tf-icons bx bx-bot",
+      "slug": "manage.assistant"
+    },
+    {
+      "url": "/customer-chats",
+      "name": "Customer Chats",
+      "icon": "menu-icon tf-icons bx bx-message-rounded-add",
+      "slug": "chat.index"
+    },
+    {
+      "url": "/subscription-plans",
+      "name": "Subscription Plans",
+      "icon": "menu-icon tf-icons bx bx-dollar-circle",
+      "slug": "subscription.index"
+    },
+    {
+      "url": "/user/my-payments",
+      "name": "My Payments",
+      "icon": "menu-icon tf-icons bx bx-credit-card",
+      "slug": "account.payments"
+    },
+    {
+      "url": "/user/billing",
+      "name": "My Subscription",
+      "icon": "menu-icon tf-icons bx bxs-badge-dollar",
+      "slug": "account.billing"
+    },
+    {
+      "url": "/user/credit-history",
+      "name": "Credit History",
+      "icon": "menu-icon tf-icons bx bx-history",
+      "slug": "account.credit.history"
+    },
+    {
+      "url": "/user/responders",
+      "name": "AutoResponder Setup",
+      "icon": "menu-icon tf-icons bx bx-data",
+      "slug": "user.responder"
+    }
+
+  ]
+}

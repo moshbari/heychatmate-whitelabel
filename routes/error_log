@@ -1,0 +1,12 @@
+[12-Feb-2024 10:03:26 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/kodeca5/chat.kodecast.com/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/kodeca5/chat.kodecast.com/routes/channels.php on line 16
+[12-Feb-2024 10:03:26 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kodeca5/chat.kodecast.com/routes/web.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/kodeca5/chat.kodecast.com/routes/web.php on line 23
+[12-Feb-2024 10:03:26 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kodeca5/chat.kodecast.com/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/kodeca5/chat.kodecast.com/routes/console.php on line 17

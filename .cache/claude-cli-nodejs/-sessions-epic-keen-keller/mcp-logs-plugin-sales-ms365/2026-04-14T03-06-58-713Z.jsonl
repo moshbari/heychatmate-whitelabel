@@ -1,0 +1,3 @@
+{"debug":"Skipping connection (cached needs-auth)","timestamp":"2026-04-14T03:06:58.813Z","sessionId":"44e953ad-4bc4-441f-8bea-db4678c6dd45","cwd":"/sessions/epic-keen-keller"}
+{"debug":"Skipping connection (cached needs-auth)","timestamp":"2026-04-14T03:06:58.814Z","sessionId":"44e953ad-4bc4-441f-8bea-db4678c6dd45","cwd":"/sessions/epic-keen-keller"}
+{"error":"Failed to fetch tools: MCP error -32601: Method not found","timestamp":"2026-04-14T03:06:58.888Z","sessionId":"fb9d7dd7-b344-49d3-987e-39121dda5fe3","cwd":"/sessions/epic-keen-keller"}

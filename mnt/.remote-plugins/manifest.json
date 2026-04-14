@@ -1,0 +1,23 @@
+{
+  "lastUpdated": 1776134023923,
+  "plugins": [
+    {
+      "id": "plugin_018pLNd4CGF8vEEmyztWR7fi",
+      "name": "cowork-plugin-management",
+      "updatedAt": "2026-04-09T23:44:45.863519Z",
+      "marketplaceId": "marketplace_01QRn9XAjzzeAokB5nPWVMxP",
+      "marketplaceName": "knowledge-work-plugins",
+      "installedBy": "user",
+      "installationPreference": "available"
+    },
+    {
+      "id": "plugin_01XLdTqJWhdxY7QuErqYHnFL",
+      "name": "sales",
+      "updatedAt": "2026-04-09T23:44:45.696593Z",
+      "marketplaceId": "marketplace_01QRn9XAjzzeAokB5nPWVMxP",
+      "marketplaceName": "knowledge-work-plugins",
+      "installedBy": "user",
+      "installationPreference": "available"
+    }
+  ]
+}
