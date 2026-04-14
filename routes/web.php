@@ -266,4 +266,72 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('notify/stripe',$gateway_path . '\Stripe@notify')->name('stripe.notify');
 Route::get('notify/paypal',$gateway_path . '\Paypal@notify')->name('paypal.notify');
+
+
+// ============================================================
+// SUPER ADMIN ROUTES
+// ============================================================
+Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'superadmin']], function () {
+  $sa_path = 'App\Http\Controllers\SuperAdmin';
+
+  // Dashboard
+  Route::get('/dashboard', $sa_path . '\DashboardController@index')->name('superadmin.dashboard');
+
+  // Tenant Management
+  Route::get('/tenants', $sa_path . '\TenantManagementController@index')->name('superadmin.tenants');
+  Route::post('/tenants/store', $sa_path . '\TenantManagementController@store')->name('superadmin.tenants.store');
+  Route::get('/tenants/{id}', $sa_path . '\TenantManagementController@show')->name('superadmin.tenants.show');
+  Route::post('/tenants/{id}/update', $sa_path . '\TenantManagementController@update')->name('superadmin.tenants.update');
+  Route::get('/tenants/{id}/delete', $sa_path . '\TenantManagementController@destroy')->name('superadmin.tenants.destroy');
+
+  // Tenant Plans
+  Route::get('/tenant-plans', $sa_path . '\TenantPlanController@index')->name('superadmin.tenant-plans');
+  Route::post('/tenant-plans/store', $sa_path . '\TenantPlanController@store')->name('superadmin.tenant-plans.store');
+  Route::post('/tenant-plans/{id}/update', $sa_path . '\TenantPlanController@update')->name('superadmin.tenant-plans.update');
+  Route::get('/tenant-plans/{id}/delete', $sa_path . '\TenantPlanController@destroy')->name('superadmin.tenant-plans.destroy');
+});
+
+
+// ============================================================
+// TENANT OWNER ROUTES
+// ============================================================
+Route::group(['prefix' => 'tenant', 'middleware' => ['auth', 'tenant.owner']], function () {
+  $t_path = 'App\Http\Controllers\Tenant';
+
+  // Dashboard
+  Route::get('/dashboard', $t_path . '\TenantDashboardController@index')->name('tenant.dashboard');
+
+  // Branding
+  Route::get('/branding', $t_path . '\BrandingController@index')->name('tenant.branding.index');
+  Route::post('/branding/update', $t_path . '\BrandingController@update')->name('tenant.branding.update');
+
+  // Domain
+  Route::get('/domain', $t_path . '\DomainController@index')->name('tenant.domain');
+  Route::post('/domain/update', $t_path . '\DomainController@update')->name('tenant.domain.update');
+  Route::post('/domain/verify', $t_path . '\DomainController@verify')->name('tenant.domain.verify');
+  Route::get('/domain/remove', $t_path . '\DomainController@removeDomain')->name('tenant.domain.remove');
+
+  // User Management
+  Route::get('/users', $t_path . '\TenantUserController@index')->name('tenant.users');
+  Route::post('/users/store', $t_path . '\TenantUserController@store')->name('tenant.users.store');
+  Route::get('/users/{id}', $t_path . '\TenantUserController@show')->name('tenant.users.show');
+  Route::post('/users/{id}/update', $t_path . '\TenantUserController@update')->name('tenant.users.update');
+  Route::post('/users/{id}/password', $t_path . '\TenantUserController@updatePassword')->name('tenant.users.password');
+  Route::get('/users/{id}/delete', $t_path . '\TenantUserController@destroy')->name('tenant.users.destroy');
+  Route::post('/users/invite', $t_path . '\TenantUserController@invite')->name('tenant.users.invite');
+
+  // API Settings
+  Route::get('/api-settings', $t_path . '\ApiSettingsController@index')->name('tenant.api-settings');
+  Route::post('/api-settings/update', $t_path . '\ApiSettingsController@update')->name('tenant.api-settings.update');
+
+  // Payment Settings
+  Route::get('/payment-settings', $t_path . '\PaymentSettingsController@index')->name('tenant.payment-settings');
+  Route::post('/payment-settings/update', $t_path . '\PaymentSettingsController@update')->name('tenant.payment-settings.update');
+
+  // Credits
+  Route::get('/credits', $t_path . '\CreditController@index')->name('tenant.credits');
+  Route::post('/credits/distribute', $t_path . '\CreditController@distribute')->name('tenant.credits.distribute');
+});
+
+
 Route::get('/{slug}', $front_path . '\FrontController@pages')->name('front.page');

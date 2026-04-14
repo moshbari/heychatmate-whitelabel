@@ -1,0 +1,70 @@
+{
+  "menu": [
+    {
+      "menuHeader": "Workspace"
+    },
+    {
+      "url": "/tenant/dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "tenant.dashboard"
+    },
+    {
+      "url": "/tenant/users",
+      "name": "Manage Users",
+      "icon": "menu-icon tf-icons bx bx-group",
+      "slug": "tenant.users"
+    },
+    {
+      "name": "Branding",
+      "icon": "menu-icon tf-icons bx bx-palette",
+      "slug": "tenant.branding",
+      "submenu": [
+        {
+          "url": "/tenant/branding",
+          "name": "Name & Logo",
+          "slug": "tenant.branding.index"
+        },
+        {
+          "url": "/tenant/domain",
+          "name": "Custom Domain",
+          "slug": "tenant.domain"
+        }
+      ]
+    },
+    {
+      "name": "Plans & Billing",
+      "icon": "menu-icon tf-icons bx bx-dollar-circle",
+      "slug": "tenant.plans",
+      "submenu": [
+        {
+          "url": "/tenant/plans",
+          "name": "User Plans",
+          "slug": "tenant.plans.index"
+        },
+        {
+          "url": "/tenant/credits",
+          "name": "Credits",
+          "slug": "tenant.credits"
+        },
+        {
+          "url": "/tenant/payment-settings",
+          "name": "Payment Gateway",
+          "slug": "tenant.payment-settings"
+        }
+      ]
+    },
+    {
+      "url": "/tenant/api-settings",
+      "name": "API Settings",
+      "icon": "menu-icon tf-icons bx bx-code-alt",
+      "slug": "tenant.api-settings"
+    },
+    {
+      "url": "/tenant/analytics",
+      "name": "Analytics",
+      "icon": "menu-icon tf-icons bx bx-bar-chart-alt-2",
+      "slug": "tenant.analytics"
+    }
+  ]
+}

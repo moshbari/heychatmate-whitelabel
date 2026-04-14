@@ -1,0 +1,64 @@
+{
+  "menu": [
+    {
+      "menuHeader": "Super Admin"
+    },
+    {
+      "url": "/superadmin/dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "superadmin.dashboard"
+    },
+    {
+      "url": "/superadmin/tenants",
+      "name": "Manage Tenants",
+      "icon": "menu-icon tf-icons bx bx-buildings",
+      "slug": "superadmin.tenants"
+    },
+    {
+      "url": "/superadmin/tenant-plans",
+      "name": "Tenant Plans",
+      "icon": "menu-icon tf-icons bx bx-package",
+      "slug": "superadmin.tenant-plans"
+    },
+    {
+      "name": "Revenue",
+      "icon": "menu-icon tf-icons bx bx-dollar-circle",
+      "slug": "superadmin.revenue",
+      "submenu": [
+        {
+          "url": "/superadmin/subscriptions",
+          "name": "Tenant Subscriptions",
+          "slug": "superadmin.subscriptions"
+        },
+        {
+          "url": "/superadmin/transactions",
+          "name": "Credit Transactions",
+          "slug": "superadmin.transactions"
+        }
+      ]
+    },
+    {
+      "name": "Platform Settings",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "superadmin.settings",
+      "submenu": [
+        {
+          "url": "/superadmin/settings/general",
+          "name": "General Settings",
+          "slug": "superadmin.settings.general"
+        },
+        {
+          "url": "/superadmin/settings/api",
+          "name": "API & Credits",
+          "slug": "superadmin.settings.api"
+        },
+        {
+          "url": "/superadmin/settings/pricing",
+          "name": "Min Price Rules",
+          "slug": "superadmin.settings.pricing"
+        }
+      ]
+    }
+  ]
+}

@@ -29,8 +29,16 @@ class MenuServiceProvider extends ServiceProvider
     $verticalMenuAdminJson = file_get_contents(base_path('resources/menu/verticalMenuAdmin.json'));
     $verticalMenuAdmin = json_decode($verticalMenuAdminJson);
 
+    $verticalMenuSuperAdminJson = file_get_contents(base_path('resources/menu/verticalMenuSuperAdmin.json'));
+    $verticalMenuSuperAdmin = json_decode($verticalMenuSuperAdminJson);
+
+    $verticalMenuTenantOwnerJson = file_get_contents(base_path('resources/menu/verticalMenuTenantOwner.json'));
+    $verticalMenuTenantOwner = json_decode($verticalMenuTenantOwnerJson);
+
     // Share all menuData to all the views
     \View::share('menuData', [$verticalMenuData]);
     \View::share('menuDataAdmin', [$verticalMenuAdmin]);
+    \View::share('menuDataSuperAdmin', [$verticalMenuSuperAdmin]);
+    \View::share('menuDataTenantOwner', [$verticalMenuTenantOwner]);
   }
 }
