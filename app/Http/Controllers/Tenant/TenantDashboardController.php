@@ -32,4 +32,27 @@ class TenantDashboardController extends Controller
 
         return view('tenant.dashboard', $data);
     }
+
+    public function analytics()
+    {
+        $tenant = current_tenant();
+
+        $data = [
+            'tenant' => $tenant,
+            'totalUsers' => User::where('tenant_id', $tenant->id)->where('role', 'user')->count(),
+            'totalBots' => ChatAssistant::where('tenant_id', $tenant->id)->count(),
+            'totalChats' => Chat::where('tenant_id', $tenant->id)->count(),
+            'todayChats' => Chat::where('tenant_id', $tenant->id)->whereDate('created_at', today())->count(),
+            'monthlyChats' => Chat::where('tenant_id', $tenant->id)
+                ->whereMonth('created_at', now()->month)
+                ->whereYear('created_at', now()->year)
+                ->count(),
+            'creditBalance' => $tenant->credit_balance,
+            'totalCreditsUsed' => Transaction::where('tenant_id', $tenant->id)
+                ->where('type', '-')
+                ->sum('credits'),
+        ];
+
+        return view('tenant.analytics', $data);
+    }
 }

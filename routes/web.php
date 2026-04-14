@@ -331,6 +331,9 @@ Route::group(['prefix' => 'tenant', 'middleware' => ['auth', 'tenant.owner']], f
   // Credits
   Route::get('/credits', $t_path . '\CreditController@index')->name('tenant.credits');
   Route::post('/credits/distribute', $t_path . '\CreditController@distribute')->name('tenant.credits.distribute');
+
+  // Analytics
+  Route::get('/analytics', $t_path . '\TenantDashboardController@analytics')->name('tenant.analytics');
 });
 
 
