@@ -2,6 +2,7 @@
 
 use App\Models\Page;
 use App\Models\User;
+use App\Models\Tenant;
 use App\Models\Country;
 use App\Models\Setting;
 use App\Models\Transaction;
@@ -35,6 +36,93 @@ if (!function_exists('update_settings')) {
     $data->value = $value;
     $data->save();
     return "ok";
+  }
+}
+
+// ── Tenant-Aware Helper Functions (NEW) ──
+
+if (!function_exists('current_tenant')) {
+  /**
+   * Get the currently resolved tenant, or null if not in tenant context.
+   */
+  function current_tenant(): ?Tenant
+  {
+    return app()->bound('current_tenant') ? app('current_tenant') : null;
+  }
+}
+
+if (!function_exists('tenant_setting')) {
+  /**
+   * Get a tenant-specific setting with fallback to global settings.
+   * Used in Blade views for branding.
+   */
+  function tenant_setting(string $key, $default = '')
+  {
+    $tenant = current_tenant();
+
+    if ($tenant) {
+      // Check tenant model attributes first (branding fields)
+      $tenantFields = [
+        'app_name', 'logo', 'favicon', 'primary_color',
+        'secondary_color', 'footer_text', 'login_bg_image',
+      ];
+
+      if (in_array($key, $tenantFields) && !empty($tenant->$key)) {
+        return $tenant->$key;
+      }
+
+      // Then check tenant-scoped settings table
+      $setting = Setting::withoutGlobalScope('tenant')
+        ->where('tenant_id', $tenant->id)
+        ->where('key', $key)
+        ->first();
+
+      if ($setting) {
+        return $setting->value;
+      }
+    }
+
+    // Fall back to global settings (tenant_id = null)
+    $global = Setting::withoutGlobalScope('tenant')
+      ->whereNull('tenant_id')
+      ->where('key', $key)
+      ->first();
+
+    return $global ? $global->value : $default;
+  }
+}
+
+if (!function_exists('tenant_asset')) {
+  /**
+   * Get a tenant asset URL (logo, favicon, etc.) with fallback to global.
+   */
+  function tenant_asset(string $type): string
+  {
+    $tenant = current_tenant();
+
+    if ($tenant && !empty($tenant->$type)) {
+      return asset('storage/tenants/' . $tenant->id . '/branding/' . $tenant->$type);
+    }
+
+    // Fallback to global settings
+    $settingKey = 'system_' . $type;
+    $value = get_settings($settingKey);
+
+    if ($value) {
+      return asset($value);
+    }
+
+    return asset('assets/img/default-logo.png');
+  }
+}
+
+if (!function_exists('is_platform_domain')) {
+  /**
+   * Check if the current request is on the main platform domain (not a tenant).
+   */
+  function is_platform_domain(): bool
+  {
+    return current_tenant() === null;
   }
 }
 
